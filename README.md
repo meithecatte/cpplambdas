@@ -1,23 +1,13 @@
-# MDX Deck + Code Surfer template
+# A Code Surfer slide deck about C++ lambdas
 
-This project was generated with the `npm init code-surfer-deck` command.
+⚠️ **MEMETIC HAZARD** ⚠️
 
-## Development
+Below, you will find my notes of the cursed process for building a deck suitable
+for deployment on GitHub Pages (with a path prefix). It is not something you
+want to witness. It might induce nightmares. **You have been warned**.
 
-To run the presentation deck in development mode:
+1. If you have just cloned the repository, run `npm i` to download the dependencies.
+2. `patch -p0 < node_modules.patch` (told you it was cursed)
+3. `node run-script build`
 
-```sh
-npm start
-```
-
-Edit the [`deck.mdx`](deck.mdx) file to get started.
-
-## Exporting
-
-To build the presentation deck:
-
-```sh
-npm run build
-```
-
-For more documentation see [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us/)
+If you know how to achieve this without modifying my dependencies' code, please contact me.
