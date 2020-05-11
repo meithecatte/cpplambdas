@@ -12,7 +12,7 @@
   },
   "name": "lambda",
   "dependencies": {
-    "gatsby": "^2.21.21",
-    "gatsby-cli": "^2.12.15"
+    "@mdx-js/mdx": "^1.6.1",
+    "gatsby": "^2.21.22"
   }
 }
