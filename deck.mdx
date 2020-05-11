@@ -7,146 +7,229 @@ import { github, vsDark } from "@code-surfer/themes";
 
 export const theme = vsDark;
 
-# Hello 👋
+# Wyrażenia lambda
 
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+O funkcjach bez nazwy
 
 ---
 
 <CodeSurfer>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
+```cpp file="example1.cpp" subtitle="Załóżmy że chcemy posortować tablicę napisów"
 ```
 
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
+```cpp file="example2.cpp" subtitle="...ale według długości"
 ```
 
-```diff 1[10:14],2[15:19],3[22:27],10:12
+```diff 7[6:13] subtitle="Nazwa tej funkcji właściwie nic nie wnosi..."
+```
 
+```diff 19 subtitle="Może moglibyśmy stworzyć funkcję tam, gdzie jej używamy?"
+```
+
+```cpp file="example3.cpp" subtitle="Moglibyśmy — za pomocą wyrażenia lambda"
+```
+
+```diff 16[5:6] subtitle="Funkcję anonimową rozpoczyna para nawiasów kwadratowych"
+```
+
+```diff 16[7:40] subtitle="Później mamy normalną listę argumentów"
+```
+
+```diff 16[42],17,18[5] subtitle="i w klamerkach, zawartość funkcji"
+```
+
+```cpp 16[42:48] file="example-with-rettype.cpp" subtitle="Jeżeli chcemy, możemy dodać typ zwracanej wartości"
+```
+
+```cpp file="inferred-types.cpp" subtitle="Lub na odwrót, kazać kompilatorowi dobrać typy samemu"
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurfer>
 
-<Step>
-
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
+```cpp file="counting-example.cpp" subtitle="Biblioteka standardowa ma wiele tego typu przydatnych funkcji"
 ```
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
+```diff 7[12:19],8:10 subtitle="count_if wywoła naszą funkcję na każdym znaku stringa i policzy ile razy zwóci true"
 ```
 
-</Step>
-
-<Step>
-
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
-
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
+```cpp file="counting2.cpp" subtitle="ale czasami chcielibyśmy wykorzystać zmienne z poza naszej anonimowej funkcji"
 ```
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
+```cpp 8[5:10] file="counting3.cpp" subtitle="W nawiasach kwadratowych podajemy listę zmiennych, z których chcemy korzystać"
 ```
 
-</Step>
-
-</CodeSurferColumns>
+</CodeSurfer>
 
 ---
 
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+<CodeSurfer>
+
+```cpp 7:18 file="input.cpp" subtitle="Funkcje anonimowe przydadzą się też, gdy mamy pewien powtarzający się szkielet algorytmu"
+```
+
+```diff 7[20:38],2 subtitle="Funkcja ma typ function. Pamiętajmy o dołączeniu odpowiedniego pliku nagłówka."
+```
+
+```diff 7[29:32] subtitle="Przed nawiasami podajemy typ, jaki funkcja powinna zwracać"
+```
+
+```diff 7[33:37] subtitle="A potem listę typów argumentów"
+```
+
+```cpp 7[33:44] file="input-othersig.cpp" subtitle="Gdy typów jest wiele, oddzielamy je przecinkami"
+```
+
+```diff 7[29:32] subtitle="A gdy funkcja nic nie zwraca, podajemy void"
+```
+
+```cpp 14[13:22] file="input.cpp" subtitle="Funkcję którą przechowujemy w zmiennej wywołamy tak jak każdą inną"
+```
+
+```diff 24:33
+```
+
+```diff 24[20,31],26:27 subtitle="Domyślnie objekt funkcji anonimowej zawiera kopię zmiennej. By modyfikować zmienne do których się odnosimy, musimy użyć & by objekt funkcji przechowywał referencję do zmiennych"
+```
+
+```cpp 24[19:21] file="input-inferred.cpp" subtitle="Możemy poprosić kompilator by sam znalazł zmienne, których używamy"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```cpp 1[15:16],3,10,5[18:25],8[13:14] file="digit-input.cpp" subtitle="Czasami najważniejsze jest to, że możemy wykorzystywać zmienne z poza funkcji anonimowej."
+```
+
+```diff 6[23:31],7[23:31] subtitle="W tym przypadku chciałem wykorzystać polecenie return do zakończenia wykonywania części kodu."
+```
+
+```diff 16[21:32] subtitle="Pozwala to również podzielić kod na logiczne operacje."
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```cpp 3:5,10[39:53],11[9:25],12[32:47] file="fill-matrix.cpp" subtitle="Funkcje przypisane do zmiennej przydają się również, kiedy daną rzecz musimy zrobić kilka razy, a musimy wykorzystać lokalne zmienne."
+```
+
+```diff 3[44],10[39:53],11[9:25],12[32:47] subtitle="W tym przypadku funkcja zwraca referencję, więc do zwróconej zmiennej mogę przypisać wartość."
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```cpp subtitle="Przykład z większego projektu: funkcje anonimowe wykorzystane do określenia kodu, który ma się wykonać gdy użytkownik wciśnie przycisk."
+incrementStateSlot.onPress = [&] {
+    if(stateSlot < 5) stateSlot++;
+    else stateSlot = 1;
+};
+hotkeys.append(&incrementStateSlot);
+```
+
+```diff 1[30:32] subtitle="Gdy funkcję przechowujemy w zmiennej, musimy upewnić się, że zmienne schwytane przez referencję dalej istnieją w momencie gdy funkcja zostaje wywołana."
+```
+
+```cpp 1[20:26],2[40:45] subtitle="W tym przypadku przydaje się wariant składni, który kopiuje zmienne"
+auto gammaAdjust = [gamma](double f) {
+    return f < 0.0 ? 0.0 : pow(f, 2.2 / gamma);
+};
+```
+
+```cpp 1[20:22] subtitle="(dostępne również w wariancie automatycznym)"
+auto gammaAdjust = [=](double f) {
+    return f < 0.0 ? 0.0 : pow(f, 2.2 / gamma);
+};
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```cpp 2,12 subtitle="Telegram wykorzystuje funkcje anonimowe by zaplanować kod, który ma być wykonany później"
+void ConnectionsManager::bindRequestToGuid(int32_t requestToken, int32_t guid) {
+    scheduleTask([&, requestToken, guid] {
+        std::map<int32_t, std::vector<int32_t>>::iterator iter = requestsByGuids.find(guid);
+        if (iter != requestsByGuids.end()) {
+            iter->second.push_back(requestToken);
+        } else {
+            std::vector<int32_t> array;
+            array.push_back(requestToken);
+            requestsByGuids[guid] = array;
+        }
+        guidsByRequests[requestToken] = guid;
+    });
+}
+```
+
+```diff 1[6:23],2[19],3[66:80],4[21:35],11[9:23],9[13:27] subtitle="Za pomocą referencji używamy większości zmiennych, ponieważ znajdują się one w obiekcie ConnectionsManager który będzie istniał gdy funkcja zostanie wywołana."
+```
+
+```diff 1[43:78],2[22:39],5[36:47],8[29:40],11[25:36,41:44],3[87:90],9[29:33] subtitle="Lecz argumenty funkcji nie będą istnieć, więc musimy je skopiować"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```cpp subtitle="W jednej z bibliotek Microsoftu mamy funkcję, która wykona odpowiednik pętli for na wielu rdzeniach procesora na raz"
+void ThreadPool::SimpleParallelFor(int total, const function<void(int)>& fn) {
+  Barrier barrier(total);
+  auto handle_iteration = [&barrier, &fn](int iteration) {
+    fn(iteration);
+    barrier.Notify();
+  };
+
+  for (int id = 0; id < total; id++) {
+    Schedule([=, &handle_iteration]() { handle_iteration(id); });
+  }
+
+  barrier.Wait();
+}
+```
+
+```diff 9,1[6:15] subtitle="Najtrudniejszą część wykonuje funkcja Schedule, która wykona przekazaną funkcję gdy któryś z rdzeni będzie miał wolną chwilę"
+```
+
+```diff 8[32:35],9[15,58:59] subtitle="Zmienna id jest kopiowana, ponieważ gdy zaplanowane zadanie zostanie wykonane, zmienna będzie miała inną wartość."
+```
+
+```diff 3[3:25],9[18:34,41:56] subtitle="Zmiennej handle_iteration nie kopiujemy, ponieważ będzie istnieć cały czas w nie zmienionej postaci"
+```
+
+```diff 2,5,12 subtitle="Zapewnia to bariera"
+```
+
+```diff 1[36:44],2[19:23],8[25:29] subtitle="Gdy jest tworzona, zapisujemy ilu powiadomień oczekujemy"
+```
+
+```diff 5 subtitle="Za każdym razem, gdy jedna z równocześnie wykonywanych iteracji pętli się wykona, wysyłamy jedno z nich"
+```
+
+```diff 12 subtitle="Przed wyjściem z funkcji czekamy, aż wszystkie zostaną wysłane"
+```
+
+```cpp 1[14:35],2[14:36],3[14:20] subtitle="W tym przypadku listę zmiennych możemy zapisać na kilka równoważnych sposobów. Pozostaje ocenić, który jest najbardziej oczywisty."
+    Schedule([=, &handle_iteration]() { handle_iteration(id); });
+    Schedule([id, &handle_iteration]() { handle_iteration(id); });
+    Schedule([&, id]() { handle_iteration(id); });
+```
+
+</CodeSurfer>
