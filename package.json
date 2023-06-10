@@ -13,6 +13,6 @@
   "name": "lambda",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.1",
-    "gatsby": "^2.21.22"
+    "gatsby": "^4.25.7"
   }
 }
